@@ -1,9 +1,13 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble(this.message, this.isMe);
+  MessageBubble(
+    this.message,
+    this.isMe
+  );
+  
   final String message;
   bool isMe;
 

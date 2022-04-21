@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
-import 'dart:developer';
-
 import 'package:chat_app_push_notification/widgets/auth/auth_form.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -62,7 +60,16 @@ class _AuthScreenState extends State<AuthScreen> {
         _isLoading = false;
       });
     } catch (err) {
-      log("@{err}");
+       var message = "An error ocurred, please check your credentials!";
+      if (err == null) {
+        message = err.message;
+      }
+      ScaffoldMessenger.of(ctx).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Theme.of(ctx).errorColor,
+        ),
+      );
       setState(() {
         _isLoading = false;
       });
